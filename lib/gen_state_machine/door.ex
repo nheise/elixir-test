@@ -7,7 +7,8 @@ defmodule Door do
   end
 
   def get_state(pid) do
-    GenStateMachine.call(pid, :get_state)
+    {state, _data} = :sys.get_state(pid)
+    state
   end
 
   def press(pid, digit) do
@@ -31,5 +32,10 @@ defmodule Door do
         IO.puts "[#{digit}] Wrong digit, locking."
         {:next_state, :locked, {code, code, unlock_time}}
     end
+  end
+
+  def handle_event(:timeout, _, _, data) do
+    IO.puts("timeout expired, locking door")
+    {:next_state, :locked, data}
   end
 end
