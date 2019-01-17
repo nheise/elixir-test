@@ -12,6 +12,7 @@ use Mix.Config
 #
 #     config :sandbox, key: :value
 #
+config(:sandbox, hard_soft_config_test: "basic config")
 # and access this configuration in your application as:
 #
 #     Application.get_env(:sandbox, :key)
