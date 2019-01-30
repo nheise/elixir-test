@@ -14,7 +14,7 @@ defmodule Checksum17 do
     numbers
     |> Enum.zip(@weights)
     |> Enum.map(fn {a, b} -> digit_sum( a * b ) end)
-    |> Enum.reduce(0, &(&1 + &2))
+    |> Enum.sum()
     |> (&(&1 - 1)).()
     |> Integer.mod(11)
     |> case do 0 -> 0; x -> 10 - x end
@@ -24,7 +24,7 @@ defmodule Checksum17 do
   def digit_sum(number) when is_integer(number) and number > 9 do
     number
     |> Integer.digits()
-    |> Enum.reduce(0, fn x, acc -> x + acc end)
+    |> Enum.sum()
     |> digit_sum()
   end
   def digit_sum(number), do: number
