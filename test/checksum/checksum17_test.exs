@@ -1,6 +1,15 @@
 defmodule Checksum17Test do
   use ExUnit.Case
 
+  test "check the checksum" do
+    assert Checksum17.calc(446786) == 0
+    assert Checksum17.calc(002100) == 7
+    assert Checksum17.calc(008210) == 9
+    assert Checksum17.calc(008140) == 8
+    assert Checksum17.calc(008150) == 7
+    assert Checksum17.calc(008160) == 6
+  end
+
   test "digit sum" do
     assert Checksum17.digit_sum(1) == 1
     assert Checksum17.digit_sum(2) == 2
