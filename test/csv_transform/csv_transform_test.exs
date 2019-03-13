@@ -2,22 +2,15 @@ defmodule CsvTransformTest do
   use ExUnit.Case
 
   @test_file Path.join(["test", "csv_transform", "file.csv"])
-  @delimiter "\t"
+  @check_map [
+    %{"Zeile 1" => "Wert1 1", "Zeile 2" => "Wert12", "Zeile 3" => "Wert13"},
+    %{"Zeile 1" => "Wert21", "Zeile 2" => "2.278", "Zeile 3" => "2,93"}
+  ]
 
   test "csv transform" do
 
-    [header | data] = File.stream!(@test_file)
-    |> Enum.map(&String.trim/1)
-    |> Enum.map(&String.split(&1,@delimiter))
+    map = CsvTransform.transform(@test_file)
 
-    IO.inspect(header,label: "header")
-    IO.inspect(data,label: "data")
-
-    data
-    |> Enum.map(&Enum.zip(&1,header))
-    |> Enum.map(&Enum.map(&1,fn {v,k} -> %{k => v} end))
-    |> Enum.map(&Enum.map_reduce(&1,%{}, &Map.merge/2))
-    |> IO.inspect(label: "data2")
-
+    assert map === @check_map
   end
 end
