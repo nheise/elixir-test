@@ -1,5 +1,5 @@
 defmodule PubSubDemo.Accounts do
-  @pubsub_name :accou
+  @pubsub_name :accounts
   @pubsub_topic "accounts_updates"
 
   def deposit(number, quantity) when is_integer(number) and is_integer(quantity) do
