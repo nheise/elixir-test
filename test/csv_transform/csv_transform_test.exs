@@ -9,7 +9,7 @@ defmodule CsvTransformTest do
 
   test "csv transform" do
 
-    map = CsvTransform.transform(@test_file)
+    map = CsvTransform.transform_file(@test_file)
 
     assert map === @check_map
   end
