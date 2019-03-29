@@ -10,9 +10,10 @@ defmodule WP do
 
   defp count(elem, acc) do
     case Map.get(acc, elem, 0) do
-      counter -> {:halt, Map.put(acc, elem, counter+1)}
+      counter -> {[{elem, counter+1}], Map.put(acc, elem, counter+1)}
     end
   end
 end
 
 WP.read()
+# elixir lib/stdin/wp.exs < lib/stdin/data.txt
