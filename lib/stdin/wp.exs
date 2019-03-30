@@ -1,17 +1,17 @@
 defmodule WP do
   def read() do
     IO.stream(:stdio, :line)
-    |> Stream.map(&String.trim/1)
-    |> Stream.map(&String.split(&1," "))
-    |> Stream.concat()
-    |> Stream.transform(%{}, &count/2)
-    |> Enum.each(&IO.inspect(&1,label: "input"))
+    |> Flow.from_enumerable()
+    |> Flow.map(&String.trim/1)
+    |> Flow.flat_map(&String.split(&1, " "))
+    |> Flow.partition()
+    |> Flow.reduce(fn -> %{} end, &count_word/2)
+    |> Enum.to_list()
+    |> IO.inspect(label: "words")
   end
 
-  defp count(elem, acc) do
-    case Map.get(acc, elem, 0) do
-      counter -> {[{elem, counter+1}], Map.put(acc, elem, counter+1)}
-    end
+  defp count_word(word, acc) do
+    Map.update(acc, word, 1, &(&1 + 1))
   end
 end
 

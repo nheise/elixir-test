@@ -1,4 +1,6 @@
 %{
+  "flow": {:hex, :flow, "0.14.3", "0d92991fe53035894d24aa8dec10dcfccf0ae00c4ed436ace3efa9813a646902", [:mix], [{:gen_stage, "~> 0.14.0", [hex: :gen_stage, repo: "hexpm", optional: false]}], "hexpm"},
+  "gen_stage": {:hex, :gen_stage, "0.14.1", "9d46723fda072d4f4bb31a102560013f7960f5d80ea44dcb96fd6304ed61e7a4", [:mix], [], "hexpm"},
   "gen_state_machine": {:hex, :gen_state_machine, "2.0.4", "cc31749b8ee50d42c8db7d96c85637c4c9fdc7a007145c8aa2f371c89148a6ca", [:mix], [], "hexpm"},
   "phoenix_pubsub": {:hex, :phoenix_pubsub, "1.1.2", "496c303bdf1b2e98a9d26e89af5bba3ab487ba3a3735f74bf1f4064d2a845a3e", [:mix], [], "hexpm"},
 }
