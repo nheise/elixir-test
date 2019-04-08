@@ -14,8 +14,9 @@ defmodule Sandbox.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]#,
-      #mod: {GenStageMaschine.Application,[]}
+      mod: {MyEctoTest.App, []},
+      #mod: {GenStageMaschine.Application,[]},
+      extra_applications: [:logger, :postgrex, :ecto]
     ]
   end
 
@@ -27,7 +28,10 @@ defmodule Sandbox.MixProject do
       {:gen_state_machine, "~> 2.0"},
       #{:gen_stage, "~> 0.14.1"}, it's in flow
       {:flow, "~> 0.14.3"},
-      {:phoenix_pubsub, "~> 1.1"}
+      {:phoenix_pubsub, "~> 1.1"},
+      {:ecto, "~> 3.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"},
     ]
   end
 end

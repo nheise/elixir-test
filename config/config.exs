@@ -22,6 +22,15 @@ config(:sandbox, hard_soft_config_test: "basic config")
 #     config :logger, level: :info
 #
 
+config :sandbox, MyEctoTest.Repo,
+    adapter: Ecto.Adapters.Postgres,
+    database: "my_ecto_test",
+    username: "postgres",
+    password: "",
+    hostname: "docker-dev"
+
+config :sandbox, ecto_repos: [MyEctoTest.Repo]
+
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
 # by uncommenting the line below and defining dev.exs, test.exs and such.
